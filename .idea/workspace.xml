@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d0c075c-587a-4d8a-94b5-be7eae390d20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/TarsosDSP_latest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getPitchTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/getPitchTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pitch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pitchDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pitchDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,20 +13,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="17" selection-start-column="17" selection-end-column="17" />
+            <state relative-caret-position="519">
+              <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pitchDetector.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MyPitchDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
+            <state relative-caret-position="324">
+              <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,6 +63,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/Pitch.java" />
         <option value="$PROJECT_DIR$/src/pitchDetector.java" />
+        <option value="$PROJECT_DIR$/src/main.java" />
       </list>
     </option>
   </component>
@@ -92,12 +92,6 @@
               <item name="getPitchTest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="getPitchTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getPitchTest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pitchDetector.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -105,7 +99,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551554594243" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551557515093" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -147,7 +141,7 @@
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" visible="true" weight="0.32904148" />
+      <window_info anchor="bottom" id="Messages" weight="0.32904148" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -169,13 +163,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pitch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -183,10 +170,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pitchDetector.java">
+    <entry file="file://$PROJECT_DIR$/src/MyPitchDetector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
+        <state relative-caret-position="324">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
