@@ -1,5 +1,5 @@
 import java.awt.List;
 public class Pitch {
-				        public static List pitches = new List();
-								        public static List time = new List();
+	public static List pitches = new List();
+	public static List time = new List();
 }

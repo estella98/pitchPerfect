@@ -3,7 +3,6 @@ import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 
 public class  MyPitchDetector implements PitchDetectionHandler  {
-    package com.musictograph.mtg;
         public void handlePitch(PitchDetectionResult pitchDetectionResult, AudioEvent audioEvent) {
             if (pitchDetectionResult.getPitch() != -1) {
                 double timeStamp = audioEvent.getTimeStamp();
@@ -23,7 +22,6 @@ public class  MyPitchDetector implements PitchDetectionHandler  {
                 String addMe2 = String.valueOf(timeStamp);
                 Pitch.pitches.add(addMe1);
                 Pitch.time.add(addMe2);
-
             }
         }
     }
