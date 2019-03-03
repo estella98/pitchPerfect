@@ -34,5 +34,14 @@ public class Converter {
 	public static Note HztoNote(double frequency) {
 		return KeyNumbertoNote(HztoKeyNumber(frequency));
 	}
+	
+	public static void main(String[] args) {
+		for(int i = 10; i < 30; i++) {
+			Note n = KeyNumbertoNote(i);
+			System.out.println(n.toMidiID());
+			
+	}
+		
+	}
 
 }
