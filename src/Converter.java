@@ -30,5 +30,9 @@ public class Converter {
 		return new Note(keyNumber,octave, note);
 		
 	}
+	
+	public static Note HztoNote(int frequency) {
+		return KeyNumbertoNote(HztoKeyNumber(frequency));
+	}
 
 }
