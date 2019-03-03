@@ -31,7 +31,7 @@ public class Converter {
 		
 	}
 	
-	public static Note HztoNote(int frequency) {
+	public static Note HztoNote(double frequency) {
 		return KeyNumbertoNote(HztoKeyNumber(frequency));
 	}
 

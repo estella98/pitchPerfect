@@ -7,6 +7,7 @@ public class Note {
 	String note;
 	
 	public void print() {
+		if (keyNumber == 0)return;
 		System.out.println("keyNumber: " + keyNumber);
 		System.out.println("octave: " + octave);
 		System.out.println("note: " + note);
