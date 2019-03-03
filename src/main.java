@@ -23,23 +23,22 @@ import java.awt.Toolkit;
 public class main {
 
     public static void main(String[] args) {
-        String filePathInput = "wav/c1.wav";
+        String filePathInput = "test2.wav";
         float sampleRate = 44100;
         int audioBufferSize = 2048;
         int bufferOverlap = 0;
 
         // Create an AudioInputStream from my .wav file
         try{
-            PitchDetectionHandler handler = new PitchDetectionHandler() {
-                @Override
-                public void handlePitch(PitchDetectionResult pitchDetectionResult,
-                                        AudioEvent audioEvent) {
-                    System.out.println(audioEvent.getTimeStamp() + " " + pitchDetectionResult.getPitch());
-                }
-            };
-            AudioDispatcher adp = AudioDispatcherFactory.fromDefaultMicrophone(44100, 2048, 0);
-            adp.addAudioProcessor(new PitchProcessor(PitchEstimationAlgorithm.AMDF, 44100, 2048, handler));
-            adp.run();
+
+            AudioInputStream stream = AudioSystem.getAudioInputStream(new File(filePathInput));
+            // Convert into TarsosDSP API
+            JVMAudioInputStream audioStream = new JVMAudioInputStream(stream);
+            AudioDispatcher dispatcher = new AudioDispatcher(audioStream, audioBufferSize, bufferOverlap);
+            MyPitchDetector myPitchDetector = new MyPitchDetector();
+            dispatcher.addAudioProcessor(new PitchProcessor(PitchEstimationAlgorithm.AMDF, sampleRate,
+                    audioBufferSize, myPitchDetector));
+            dispatcher.run();
         }
         catch(Exception error)
         {
