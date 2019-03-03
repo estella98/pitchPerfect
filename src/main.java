@@ -2,6 +2,7 @@ import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -45,7 +46,18 @@ public class main extends JFrame{
     	
     	String filePathInput = "test.wav";
     	frame = new JFrame();
-    	contentPane = new ImagePanel();
+    	contentPane = new JPanel();
+    	BufferedImage background;
+		try {
+			background = ImageIO.read(new File("Background.jpg"));
+			JLabel picLabel = new JLabel(new ImageIcon(background));
+			contentPane.add(picLabel);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	
+    	
 //    	try {
 //    	    final BufferedImage backgroundImage = javax.imageio.ImageIO.read(new File("Background.jpg"));
 //    	    contentPane = new ImagePanel(new BorderLayout()) {
