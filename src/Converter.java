@@ -7,7 +7,7 @@ public class Converter {
 		double a = frequency/ STANDARD_A4;
 		double b = Math.log(a)/Math.log(2);
 		double n = 12 * b + 49;
-		return (int) n;
+		return (int) ((n - (int)n > 0.5)? Math.ceil(n):Math.floor(n));
 	}
 	
 	public static Note KeyNumbertoNote(int keyNumber) {
