@@ -7,7 +7,6 @@ public class  MyPitchDetector implements PitchDetectionHandler  {
             if (pitchDetectionResult.getPitch() != -1) {
                 double timeStamp = audioEvent.getTimeStamp();
                 float pitch = pitchDetectionResult.getPitch();
-
                 float probability = pitchDetectionResult.getProbability();
                 double rms = audioEvent.getRMS() * 100;
                 String message = String.format("Pitch detected at %.2fs: %.2fHz ( %.2f probability, RMS: %.5f )\n",
