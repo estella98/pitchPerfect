@@ -23,7 +23,7 @@ import java.awt.Toolkit;
 public class main {
 
     public static void main(String[] args) {
-        String filePathInput = "test2.wav";
+        String filePathInput = "3notes.wav";
         float sampleRate = 44100;
         int audioBufferSize = 2048;
         int bufferOverlap = 0;
