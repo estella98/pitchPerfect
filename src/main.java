@@ -34,7 +34,9 @@ public class main {
                 @Override
                 public void handlePitch(PitchDetectionResult pitchDetectionResult,
                                         AudioEvent audioEvent) {
-                    System.out.println(audioEvent.getTimeStamp() + " " + pitchDetectionResult.getPitch());
+                	Note n = Converter.HztoNote(pitchDetectionResult.getPitch());
+                    if(pitchDetectionResult.getPitch()!= -1.0)System.out.println(audioEvent.getTimeStamp() + " " + pitchDetectionResult.getPitch());
+                    n.print(); 
                 }
             };
             AudioDispatcher adp = AudioDispatcherFactory.fromDefaultMicrophone(44100, 2048, 0);
