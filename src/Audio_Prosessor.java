@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
-import com.sun.prism.Image;
+import java.awt.*;
 
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.io.jvm.JVMAudioInputStream;
@@ -21,6 +21,7 @@ import be.tarsos.dsp.pitch.PitchProcessor.PitchEstimationAlgorithm;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Time;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -31,13 +32,11 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 
-public class main extends JFrame{
+public class Audio_Prosessor extends JPanel{
 	
 	private static final long serialVersionUID = 12L;
-	private static JPanel contentPane;
 	private static JFrame frame;
 	static BufferedImage background;
-	private static JTextField title;
 	static int width = 500;
 	static int height = 500;
 	static Timer timer;
@@ -45,55 +44,43 @@ public class main extends JFrame{
     public static void main(String[] args) {
     	
     	String filePathInput = "test.wav";
+    	
+    	// initiates the panel
+    	Audio_Prosessor program = new Audio_Prosessor();
+    	program.setVisible(true);
+    	program.setBorder(new EmptyBorder(5, 5, 5, 5));
+    	program.setLayout(new FlowLayout());
+    	
+    	// initiates the frame
     	frame = new JFrame();
-    	contentPane = new JPanel();
+    	frame.setTitle("test");
+    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	frame.setBounds(650, 300, 1000, 1000);
+    	frame.setSize(width, height);
+    	frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+    	frame.setContentPane(program);
+		
     	BufferedImage background;
-		try {
-			background = ImageIO.read(new File("Background.jpg"));
-			JLabel picLabel = new JLabel(new ImageIcon(background));
-			contentPane.add(picLabel);
+    	try {
+			background = ImageIO.read(new File("Background2.jpg"));
+			Image scaled_bg = background.getScaledInstance(500, 500, Image.SCALE_SMOOTH);
+			JLabel picLabel = new JLabel(new ImageIcon(scaled_bg), JLabel.CENTER);
+			picLabel.setVisible(true);
+			picLabel.setBounds(250, 0, 1000, 1000);
+			program.add(picLabel);
+			frame.pack();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
     	
+//    	JTextField title = new JTextField("Audio Processor");
+//    	program.add(title);
     	
-//    	try {
-//    	    final BufferedImage backgroundImage = javax.imageio.ImageIO.read(new File("Background.jpg"));
-//    	    contentPane = new ImagePanel(new BorderLayout()) {
-//				@Override 
-//				public void paintComponent(Graphics g) {
-//    	            g.drawImage(backgroundImage, 0, 0, null);
-//    	        }
-//    	    };
-    	frame.setContentPane(contentPane);
-//    	} catch (IOException e) {
-//    	    throw new RuntimeException(e);
-//    	}
-    	
-    	contentPane.setVisible(true);
-    	title = new JTextField("Audio Processor");
-    	title.setBounds(200, 100, 100, 50);
-    			
-    	frame.setTitle("test");
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	frame.setBounds(650, 300, 1000, 1000);
-    	frame.setSize(width, height + 20);
-    	frame.setVisible(true);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		
-		frame.setContentPane(contentPane);
-		contentPane.setLayout(null);
-		contentPane.add(title);
-		
-		
 		JButton loadButton = new JButton("Start");
 		loadButton.setBounds(200, 200, 100, 40);
-		contentPane.add(loadButton);
-		
-//		timer = new Timer(6, null);
-//		timer.start();
+		program.add(loadButton);
 		
 		loadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -117,15 +104,12 @@ public class main extends JFrame{
 		        };
 			}
 		});
+		
+//		Timer t = new Timer(6, program);
+//		t.start();
     }
     
-//public void paintComponent(Graphics g) {
-//	try {
-//		background = ImageIO.read(new File("./asset/background.jpg"));
-//	} catch (IOException ex) {
-//		System.err.println("image not found");
-//	}
-//	g.drawImage(background, 0, 0, width, height, this);
-//    }
-}
+    
 
+   
+}
