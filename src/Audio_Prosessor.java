@@ -40,7 +40,7 @@ public class Audio_Prosessor extends JPanel{
 	static int width = 500;
 	static int height = 500;
 	static Timer timer;
-	
+	static String notes;
     public static void main(String[] args) {
     	
     	String filePathInput = "test.wav";
@@ -95,9 +95,13 @@ public class Audio_Prosessor extends JPanel{
 		            JVMAudioInputStream audioStream = new JVMAudioInputStream(stream);
 		            AudioDispatcher dispatcher = new AudioDispatcher(audioStream, audioBufferSize, bufferOverlap);
 		            MyPitchDetector myPitchDetector = new MyPitchDetector();
+		            notes = myPitchDetector.getNote();
+		            frame.repaint();
+		            System.out.println(notes);
 		            dispatcher.addAudioProcessor(new PitchProcessor(PitchEstimationAlgorithm.YIN, sampleRate,
 		                    audioBufferSize, myPitchDetector));
 		            dispatcher.run();
+		            
 		        } catch(Exception error)
 		        {
 		            error.printStackTrace();
@@ -108,8 +112,8 @@ public class Audio_Prosessor extends JPanel{
 //		Timer t = new Timer(6, program);
 //		t.start();
     }
+    public void paintComponent(Graphics g) {
+    	g.drawString(notes, 200, 200);
+    }
     
-    
-
-   
 }

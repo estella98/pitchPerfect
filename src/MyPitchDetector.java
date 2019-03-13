@@ -18,7 +18,7 @@ public class MyPitchDetector implements PitchDetectionHandler {
 			double rms = audioEvent.getRMS() * 100;
 			String message = String.format("Pitch detected at %.2fs: %.2fHz ( %.2f probability, RMS: %.5f )\n",
 					timeStamp, pitch, probability, rms);
-			System.out.println(message);
+//			System.out.println(message);
 			
 			if (probability < 0.5 && Pitch.pitches.getItemCount() > 2) {
 				addMe1 = Pitch.pitches.getItem(Pitch.pitches.getItemCount() - 1);
@@ -31,5 +31,7 @@ public class MyPitchDetector implements PitchDetectionHandler {
 		}
 	}
 	
-   
+	 public String getNote() {
+	    	return addMe1;
+	    }
 }
