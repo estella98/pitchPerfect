@@ -1,4 +1,10 @@
 import be.tarsos.dsp.AudioDispatcher;
+import be.tarsos.dsp.AudioEvent;
+import be.tarsos.dsp.io.jvm.AudioDispatcherFactory;
+import be.tarsos.dsp.pitch.PitchDetectionHandler;
+import be.tarsos.dsp.pitch.PitchDetectionResult;
+import be.tarsos.dsp.pitch.PitchProcessor;
+import be.tarsos.dsp.pitch.PitchProcessor.PitchEstimationAlgorithm;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -36,8 +42,28 @@ public class Graph extends Application{
         xAxis.setAutoRanging(false);
         NumberAxis yAxis = new NumberAxis();
         yAxis.setAutoRanging(true);
-        adp = myadp;
-
+        
+        float sampleRate = 44100;
+        int audioBufferSize = 2048;
+        int bufferOverlap = 0;
+        // Create an AudioInputStream from my .wav file
+        try{
+            PitchDetectionHandler handler = new PitchDetectionHandler() {
+                @Override
+                public void handlePitch(PitchDetectionResult pitchDetectionResult,
+                                        AudioEvent audioEvent) {
+                	Note n = Converter.HztoNote(pitchDetectionResult.getPitch());
+                    if(pitchDetectionResult.getPitch()!= -1.0)System.out.println(audioEvent.getTimeStamp() + " " + pitchDetectionResult.getPitch());
+                    n.print();
+                }
+            };
+        adp = AudioDispatcherFactory.fromDefaultMicrophone(44100, 2048, 0);
+        adp.addAudioProcessor(new PitchProcessor(PitchEstimationAlgorithm.AMDF, 44100, 2048, handler));
+        }
+        catch(Exception error)
+        {
+            error.printStackTrace();
+        };
         //-- Line
         final LineChart<Number, Number> sc = new LineChart<Number, Number>(xAxis, yAxis) {
             // Override to remove symbols on each data point
@@ -67,12 +93,16 @@ public class Graph extends Application{
         prepareTimeline();
     }
 
-
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
     private class AddToQueue implements Runnable {
         public void run() {
             try {
                 // add a item of random data to queue
-                adp.run();
+//                adp.run();
+            	dataQ.add(Math.random());
                 Thread.sleep(50);
                 executor.execute(this);
             } catch (InterruptedException ex) {
