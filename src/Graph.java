@@ -1,4 +1,10 @@
 import be.tarsos.dsp.AudioDispatcher;
+import be.tarsos.dsp.AudioEvent;
+import be.tarsos.dsp.io.jvm.AudioDispatcherFactory;
+import be.tarsos.dsp.pitch.PitchDetectionHandler;
+import be.tarsos.dsp.pitch.PitchDetectionResult;
+import be.tarsos.dsp.pitch.PitchProcessor;
+import be.tarsos.dsp.pitch.PitchProcessor.PitchEstimationAlgorithm;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -20,6 +26,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+
+
+
 public class Graph extends Application{
     private static final int MAX_DATA_POINTS = 50;
     private Series series;
@@ -27,6 +41,7 @@ public class Graph extends Application{
     private ConcurrentLinkedQueue<Number> dataQ = new ConcurrentLinkedQueue<Number>();
     private ExecutorService executor;
     private AddToQueue addToQueue;
+    private Model mymodel;
     private Timeline timeline2;
     private NumberAxis xAxis;
     private AudioDispatcher adp;
@@ -35,9 +50,26 @@ public class Graph extends Application{
         xAxis.setForceZeroInRange(false);
         xAxis.setAutoRanging(false);
         NumberAxis yAxis = new NumberAxis();
-        yAxis.setAutoRanging(true);
-        adp = myadp;
-
+        yAxis.setAutoRanging(false);
+        mymodel = new Model();
+        // Create an AudioInputStream from my .wav file
+        try{
+            PitchDetectionHandler handler = new PitchDetectionHandler() {
+                @Override
+                public void handlePitch(PitchDetectionResult pitchDetectionResult,
+                                        AudioEvent audioEvent) {
+                	Note n = Converter.HztoNote(pitchDetectionResult.getPitch());
+                    if(pitchDetectionResult.getPitch()!= -1.0)System.out.println(audioEvent.getTimeStamp() + " " + pitchDetectionResult.getPitch());
+                    n.print();
+                }
+            };
+        adp = AudioDispatcherFactory.fromDefaultMicrophone(44100, 2048, 0);
+        adp.addAudioProcessor(new PitchProcessor(PitchEstimationAlgorithm.AMDF, 44100, 2048, handler));
+        }
+        catch(Exception error)
+        {
+            error.printStackTrace();
+        };
         //-- Line
         final LineChart<Number, Number> sc = new LineChart<Number, Number>(xAxis, yAxis) {
             // Override to remove symbols on each data point
@@ -62,17 +94,21 @@ public class Graph extends Application{
         //-- Prepare Executor Services
         executor = Executors.newCachedThreadPool();
         addToQueue = new AddToQueue();
-        executor.execute(addToQueue);
+        executor.execute(mymodel);
         //-- Prepare Timeline
         prepareTimeline();
     }
 
-
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
     private class AddToQueue implements Runnable {
         public void run() {
             try {
                 // add a item of random data to queue
-                adp.run();
+//                adp.run();
+            	dataQ.add(Math.random());
                 Thread.sleep(50);
                 executor.execute(this);
             } catch (InterruptedException ex) {
@@ -92,10 +128,9 @@ public class Graph extends Application{
     }
 
     private void addDataToSeries() {
-        for (int i = 0; i < 20; i++) { //-- add 20 numbers to the plot+
-            if (dataQ.isEmpty()) break;
-            series.getData().add(new LineChart.Data(xSeriesData++, dataQ.remove()));
-        }
+        //System.out.println("the current Note Key is "+mymodel.getNote().getKeyNumber());
+        series.getData().add(new LineChart.Data(xSeriesData++, mymodel.getNote().getKeyNumber()));
+
         // remove points to keep us at no more than MAX_DATA_POINTS
         if (series.getData().size() > MAX_DATA_POINTS) {
             series.getData().remove(0, series.getData().size() - MAX_DATA_POINTS);
@@ -104,4 +139,5 @@ public class Graph extends Application{
         xAxis.setLowerBound(xSeriesData-MAX_DATA_POINTS);
         xAxis.setUpperBound(xSeriesData-1);
     }
+
 }

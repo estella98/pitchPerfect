@@ -20,8 +20,10 @@ public class Note {
 		this.octave = octave;
 		this.note = note;
 	}
-	
-	
-	
+
+	public int getKeyNumber (){
+		return keyNumber;
+	}
+
 
 }
