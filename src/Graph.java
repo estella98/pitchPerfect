@@ -26,6 +26,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+
+
+
 public class Graph extends Application{
     private static final int MAX_DATA_POINTS = 50;
     private Series series;
@@ -33,6 +41,7 @@ public class Graph extends Application{
     private ConcurrentLinkedQueue<Number> dataQ = new ConcurrentLinkedQueue<Number>();
     private ExecutorService executor;
     private AddToQueue addToQueue;
+    private Model mymodel;
     private Timeline timeline2;
     private NumberAxis xAxis;
     private AudioDispatcher adp;
@@ -41,11 +50,8 @@ public class Graph extends Application{
         xAxis.setForceZeroInRange(false);
         xAxis.setAutoRanging(false);
         NumberAxis yAxis = new NumberAxis();
-        yAxis.setAutoRanging(true);
-        
-        float sampleRate = 44100;
-        int audioBufferSize = 2048;
-        int bufferOverlap = 0;
+        yAxis.setAutoRanging(false);
+        mymodel = new Model();
         // Create an AudioInputStream from my .wav file
         try{
             PitchDetectionHandler handler = new PitchDetectionHandler() {
@@ -88,7 +94,7 @@ public class Graph extends Application{
         //-- Prepare Executor Services
         executor = Executors.newCachedThreadPool();
         addToQueue = new AddToQueue();
-        executor.execute(addToQueue);
+        executor.execute(mymodel);
         //-- Prepare Timeline
         prepareTimeline();
     }
@@ -122,10 +128,9 @@ public class Graph extends Application{
     }
 
     private void addDataToSeries() {
-        for (int i = 0; i < 20; i++) { //-- add 20 numbers to the plot+
-            if (dataQ.isEmpty()) break;
-            series.getData().add(new LineChart.Data(xSeriesData++, dataQ.remove()));
-        }
+        //System.out.println("the current Note Key is "+mymodel.getNote().getKeyNumber());
+        series.getData().add(new LineChart.Data(xSeriesData++, mymodel.getNote().getKeyNumber()));
+
         // remove points to keep us at no more than MAX_DATA_POINTS
         if (series.getData().size() > MAX_DATA_POINTS) {
             series.getData().remove(0, series.getData().size() - MAX_DATA_POINTS);
@@ -134,4 +139,5 @@ public class Graph extends Application{
         xAxis.setLowerBound(xSeriesData-MAX_DATA_POINTS);
         xAxis.setUpperBound(xSeriesData-1);
     }
+
 }
