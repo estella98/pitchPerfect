@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d0c075c-587a-4d8a-94b5-be7eae390d20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/Graph$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/Graph$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph$AddToQueue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/Graph.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Note.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/Note.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Note.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,15 +22,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="116" column="51" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
+            <state relative-caret-position="282">
+              <caret line="65" column="56" lean-forward="true" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1279#1287#0" expanded="true" />
-                <element signature="e#3545#3561#0" expanded="true" />
+                <element signature="e#2005#2021#0" expanded="true" />
                 <element signature="e#5168#5302#0" expanded="true" />
                 <element signature="e#5301#5302#0" expanded="true" />
                 <element signature="e#5939#5940#0" expanded="true" />
@@ -119,7 +111,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MyPitchDetector.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
@@ -139,6 +131,14 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>linechart</find>
+      <find>scatter</find>
+      <find>sca</find>
+      <find>Scatter</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -189,7 +189,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552618279872" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552619802111" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -371,28 +371,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Graph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="116" column="51" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1279#1287#0" expanded="true" />
-            <element signature="e#3545#3561#0" expanded="true" />
-            <element signature="e#5168#5302#0" expanded="true" />
-            <element signature="e#5301#5302#0" expanded="true" />
-            <element signature="e#5939#5940#0" expanded="true" />
-            <element signature="e#5967#5968#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MyPitchDetector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="65" column="56" lean-forward="true" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1279#1287#0" expanded="true" />
+            <element signature="e#2005#2021#0" expanded="true" />
+            <element signature="e#5168#5302#0" expanded="true" />
+            <element signature="e#5301#5302#0" expanded="true" />
+            <element signature="e#5939#5940#0" expanded="true" />
+            <element signature="e#5967#5968#0" expanded="true" />
           </folding>
         </state>
       </provider>

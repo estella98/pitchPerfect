@@ -1,38 +1,19 @@
 import be.tarsos.dsp.AudioDispatcher;
-import be.tarsos.dsp.AudioEvent;
-import be.tarsos.dsp.io.jvm.AudioDispatcherFactory;
-import be.tarsos.dsp.pitch.PitchDetectionHandler;
-import be.tarsos.dsp.pitch.PitchDetectionResult;
-import be.tarsos.dsp.pitch.PitchProcessor;
-import be.tarsos.dsp.pitch.PitchProcessor.PitchEstimationAlgorithm;
 import javafx.application.Application;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Label;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.chart.LineChart;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
+import javafx.scene.chart.ScatterChart;
 import javafx.animation.Timeline;
 import javafx.animation.AnimationTimer;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-
 
 
 
@@ -41,8 +22,8 @@ public class Graph extends Application{
 
     // declare a pane class that holds the graph and the text label
     public class ChartAnnotationOverlay extends Pane {
-        private Label _mylabel;
-        private XYChart<Number, Number> _chart;
+        private Label mylabel;
+        private XYChart<Number, Number> chart;
 
         // adding the chart and the label nodes as children of the root node(self)
         public ChartAnnotationOverlay (XYChart<Number, Number> chart, Label mylabel) {
@@ -59,15 +40,17 @@ public class Graph extends Application{
     private Model mymodel;
     private Timeline timeline2;
     private NumberAxis xAxis;
+    private NumberAxis yAxis;
     private AudioDispatcher adp;
     private ChartAnnotationOverlay myPane;
     private Label mylabel;
+
     private void init(Stage primaryStage, AudioDispatcher myadp) {
-        mylabel = new Label("Current Note ");
+        mylabel = new Label("Current Note");
         xAxis = new NumberAxis(0,MAX_DATA_POINTS,MAX_DATA_POINTS/10);
         xAxis.setForceZeroInRange(false);
         xAxis.setAutoRanging(false);
-        NumberAxis yAxis = new NumberAxis();
+        yAxis = new NumberAxis();
         yAxis.setAutoRanging(false);
         mymodel = new Model();
 
