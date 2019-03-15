@@ -6,7 +6,8 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 import be.tarsos.dsp.pitch.PitchProcessor.PitchEstimationAlgorithm;
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.scene.layout.Pane;
+import javafx.scene.control.Label;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.chart.LineChart;
@@ -34,42 +35,42 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 
 
+
+
 public class Graph extends Application{
+
+    // declare a pane class that holds the graph and the text label
+    public class ChartAnnotationOverlay extends Pane {
+        private Label _mylabel;
+        private XYChart<Number, Number> _chart;
+
+        // adding the chart and the label nodes as children of the root node(self)
+        public ChartAnnotationOverlay (XYChart<Number, Number> chart, Label mylabel) {
+            this.getChildren().add(chart);
+            this.getChildren().add(mylabel);
+        }
+    }
+
     private static final int MAX_DATA_POINTS = 50;
     private Series series;
     private int xSeriesData = 0;
     private ConcurrentLinkedQueue<Number> dataQ = new ConcurrentLinkedQueue<Number>();
     private ExecutorService executor;
-    private AddToQueue addToQueue;
     private Model mymodel;
     private Timeline timeline2;
     private NumberAxis xAxis;
     private AudioDispatcher adp;
+    private ChartAnnotationOverlay myPane;
+    private Label mylabel;
     private void init(Stage primaryStage, AudioDispatcher myadp) {
+        mylabel = new Label("Current Note ");
         xAxis = new NumberAxis(0,MAX_DATA_POINTS,MAX_DATA_POINTS/10);
         xAxis.setForceZeroInRange(false);
         xAxis.setAutoRanging(false);
         NumberAxis yAxis = new NumberAxis();
         yAxis.setAutoRanging(false);
         mymodel = new Model();
-        // Create an AudioInputStream from my .wav file
-        try{
-            PitchDetectionHandler handler = new PitchDetectionHandler() {
-                @Override
-                public void handlePitch(PitchDetectionResult pitchDetectionResult,
-                                        AudioEvent audioEvent) {
-                	Note n = Converter.HztoNote(pitchDetectionResult.getPitch());
-                    if(pitchDetectionResult.getPitch()!= -1.0)System.out.println(audioEvent.getTimeStamp() + " " + pitchDetectionResult.getPitch());
-                    n.print();
-                }
-            };
-        adp = AudioDispatcherFactory.fromDefaultMicrophone(44100, 2048, 0);
-        adp.addAudioProcessor(new PitchProcessor(PitchEstimationAlgorithm.AMDF, 44100, 2048, handler));
-        }
-        catch(Exception error)
-        {
-            error.printStackTrace();
-        };
+
         //-- Line
         final LineChart<Number, Number> sc = new LineChart<Number, Number>(xAxis, yAxis) {
             // Override to remove symbols on each data point
@@ -78,13 +79,12 @@ public class Graph extends Application{
         sc.setAnimated(false);
         sc.setId("liveLineChart");
         sc.setTitle("Pitch Real Time");
-
         //-- Chart Series
         series = new LineChart.Series<Number, Number>();
         series.setName("Pitch Line Series");
         sc.getData().add(series);
-
-        primaryStage.setScene(new Scene(sc));
+        myPane  = new ChartAnnotationOverlay(sc, mylabel);
+        primaryStage.setScene(new Scene(myPane));
     }
 
     @Override public void start(Stage primaryStage) throws Exception {
@@ -93,29 +93,12 @@ public class Graph extends Application{
 
         //-- Prepare Executor Services
         executor = Executors.newCachedThreadPool();
-        addToQueue = new AddToQueue();
         executor.execute(mymodel);
         //-- Prepare Timeline
         prepareTimeline();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
-    private class AddToQueue implements Runnable {
-        public void run() {
-            try {
-                // add a item of random data to queue
-//                adp.run();
-            	dataQ.add(Math.random());
-                Thread.sleep(50);
-                executor.execute(this);
-            } catch (InterruptedException ex) {
-                //Logger.getLogger(LineChartSample.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+
 
     //-- Timeline gets called in the JavaFX Main thread
     private void prepareTimeline() {
@@ -128,9 +111,10 @@ public class Graph extends Application{
     }
 
     private void addDataToSeries() {
+        Note n = mymodel.getNote();
         //System.out.println("the current Note Key is "+mymodel.getNote().getKeyNumber());
-        series.getData().add(new LineChart.Data(xSeriesData++, mymodel.getNote().getKeyNumber()));
-
+        series.getData().add(new LineChart.Data(xSeriesData++, n.getKeyNumber()));
+        mylabel.setText(n.getNote() + n.getOctave());
         // remove points to keep us at no more than MAX_DATA_POINTS
         if (series.getData().size() > MAX_DATA_POINTS) {
             series.getData().remove(0, series.getData().size() - MAX_DATA_POINTS);
@@ -140,4 +124,7 @@ public class Graph extends Application{
         xAxis.setUpperBound(xSeriesData-1);
     }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

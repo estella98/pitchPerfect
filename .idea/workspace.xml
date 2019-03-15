@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d0c075c-587a-4d8a-94b5-be7eae390d20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/Graph$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/Graph$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/Graph$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph$AddToQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/Graph$AddToQueue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph$AddToQueue.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/Graph.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/Note.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/Note.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/model$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/model$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/getPitchTest/model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/getPitchTest/model.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Note.java" afterDir="false" />
     </list>
@@ -33,29 +30,42 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="131" column="53" selection-start-line="131" selection-start-column="53" selection-end-line="131" selection-end-column="53" />
+            <state relative-caret-position="224">
+              <caret line="116" column="51" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1279#1287#0" expanded="true" />
-                <element signature="e#2830#2846#0" expanded="true" />
-                <element signature="e#3793#3794#0" expanded="true" />
-                <element signature="e#3821#3822#0" expanded="true" />
-                <element signature="e#4330#4464#0" expanded="true" />
-                <element signature="e#4463#4464#0" expanded="true" />
+                <element signature="e#3545#3561#0" expanded="true" />
+                <element signature="e#5168#5302#0" expanded="true" />
+                <element signature="e#5301#5302#0" expanded="true" />
+                <element signature="e#5939#5940#0" expanded="true" />
+                <element signature="e#5967#5968#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/util/AbstractQueue.java">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/javafx-src.zip!/javafx/scene/Parent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2">
-              <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="10" />
+            <state relative-caret-position="-3113">
+              <caret line="577" column="32" selection-start-line="577" selection-start-column="32" selection-end-line="577" selection-end-column="32" />
+              <folding>
+                <element signature="e#24048#24049#0" expanded="true" />
+                <element signature="e#24091#24092#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/javafx-src.zip!/javafx/stage/Stage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-181">
+              <caret line="249" column="45" selection-start-line="249" selection-start-column="45" selection-end-line="249" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -63,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="794">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="941">
+              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1422#1423#0" expanded="true" />
@@ -86,7 +96,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Converter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7">
+            <state relative-caret-position="-542">
               <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
             </state>
           </provider>
@@ -95,17 +105,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Note.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="891">
+              <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
               <folding>
                 <element signature="e#488#489#0" expanded="true" />
                 <element signature="e#510#511#0" expanded="true" />
+                <element signature="e#537#538#0" expanded="true" />
+                <element signature="e#556#557#0" expanded="true" />
+                <element signature="e#582#583#0" expanded="true" />
+                <element signature="e#600#601#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MyPitchDetector.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
@@ -175,7 +189,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552547178262" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552618279872" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -256,7 +270,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.37831324" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37831324" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -276,16 +290,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/MyPitchDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Downloads/TarsosDSP-latest.jar!/be/tarsos/dsp/io/jvm/AudioDispatcherFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5372">
@@ -294,29 +298,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.java" />
-    <entry file="file://$PROJECT_DIR$/src/Converter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/util/concurrent/ExecutorService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1659">
           <caret line="136" column="17" selection-start-line="136" selection-start-column="17" selection-end-line="136" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="794">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1422#1423#0" expanded="true" />
-            <element signature="e#1446#1447#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -336,27 +321,78 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Note.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="891">
+          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
           <folding>
             <element signature="e#488#489#0" expanded="true" />
             <element signature="e#510#511#0" expanded="true" />
+            <element signature="e#537#538#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#582#583#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Converter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-542">
+          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="941">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
+            <element signature="e#1446#1447#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/javafx-src.zip!/javafx/stage/Stage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-181">
+          <caret line="249" column="45" selection-start-line="249" selection-start-column="45" selection-end-line="249" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/javafx-src.zip!/javafx/scene/Parent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3113">
+          <caret line="577" column="32" selection-start-line="577" selection-start-column="32" selection-end-line="577" selection-end-column="32" />
+          <folding>
+            <element signature="e#24048#24049#0" expanded="true" />
+            <element signature="e#24091#24092#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="131" column="53" selection-start-line="131" selection-start-column="53" selection-end-line="131" selection-end-column="53" />
+        <state relative-caret-position="224">
+          <caret line="116" column="51" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1279#1287#0" expanded="true" />
-            <element signature="e#2830#2846#0" expanded="true" />
-            <element signature="e#3793#3794#0" expanded="true" />
-            <element signature="e#3821#3822#0" expanded="true" />
-            <element signature="e#4330#4464#0" expanded="true" />
-            <element signature="e#4463#4464#0" expanded="true" />
+            <element signature="e#3545#3561#0" expanded="true" />
+            <element signature="e#5168#5302#0" expanded="true" />
+            <element signature="e#5301#5302#0" expanded="true" />
+            <element signature="e#5939#5940#0" expanded="true" />
+            <element signature="e#5967#5968#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyPitchDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
