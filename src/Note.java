@@ -25,5 +25,12 @@ public class Note {
 		return keyNumber;
 	}
 
+	public int getOctave(){
+		return octave;
+	}
+
+	public String getNote(){
+		return note;
+	}
 
 }
