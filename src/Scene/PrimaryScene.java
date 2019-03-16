@@ -1,3 +1,4 @@
+package Scene;
 import be.tarsos.dsp.AudioDispatcher;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -19,10 +20,13 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import Model.Model;
+import Model.Note;
 
 
 
-public class Graph extends Application{
+
+public class PrimaryScene extends Application{
 
     // declare a pane class that holds the graph and the text label
     public class ChartAnnotationOverlay extends Pane {

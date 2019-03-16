@@ -1,3 +1,4 @@
+package Model;
 import java.awt.List;
 public class Pitch {
 	public static List pitches = new List();

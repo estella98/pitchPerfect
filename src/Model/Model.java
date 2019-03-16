@@ -1,3 +1,4 @@
+package Model;
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.io.jvm.AudioDispatcherFactory;
