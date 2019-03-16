@@ -7,7 +7,7 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
 
-public class Model implements Runnable {
+public class ADPModel implements Runnable {
     Note n;
     private void model() {
 

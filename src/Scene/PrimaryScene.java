@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import Model.Model;
+import Model.ADPModel;
 import Model.Note;
 
 
@@ -45,7 +45,7 @@ public class PrimaryScene extends Application{
     private int xSeriesData = 0;
     private ConcurrentLinkedQueue<Number> dataQ = new ConcurrentLinkedQueue<Number>();
     private ExecutorService executor;
-    private Model mymodel;
+    private ADPModel mymodel;
     private Timeline timeline2;
     private NumberAxis xAxis;
     private NumberAxis yAxis;
@@ -60,7 +60,7 @@ public class PrimaryScene extends Application{
         xAxis.setAutoRanging(false);
         yAxis = new NumberAxis();
         yAxis.setAutoRanging(false);
-        mymodel = new Model();
+        mymodel = new ADPModel();
 
         //-- Line
         final LineChart<Number, Number> sc = new LineChart<Number, Number>(xAxis, yAxis) {
