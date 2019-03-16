@@ -1,3 +1,4 @@
+package Model;
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.io.jvm.AudioDispatcherFactory;
@@ -6,7 +7,7 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
 
-public class Model implements Runnable {
+public class ADPModel implements Runnable {
     Note n;
     private void model() {
 
