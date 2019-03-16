@@ -1,15 +1,19 @@
 import be.tarsos.dsp.AudioDispatcher;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Label;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.ScatterChart;
 import javafx.animation.Timeline;
 import javafx.animation.AnimationTimer;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
@@ -68,6 +72,15 @@ public class Graph extends Application{
         sc.getData().add(series);
         myPane  = new ChartAnnotationOverlay(sc, mylabel);
         primaryStage.setScene(new Scene(myPane));
+        EventHandler closeWindow =  new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent event) {
+				// TODO Auto-generated method stub
+				Platform.exit();
+                System.exit(0);
+			}
+        };
+        primaryStage.setOnCloseRequest(closeWindow);
     }
 
     @Override public void start(Stage primaryStage) throws Exception {
@@ -93,18 +106,24 @@ public class Graph extends Application{
         }.start();
     }
 
-    private void addDataToSeries() {
+    
+	
+	private void addDataToSeries() {
+		
         Note n = mymodel.getNote();
         //System.out.println("the current Note Key is "+mymodel.getNote().getKeyNumber());
-        series.getData().add(new LineChart.Data(xSeriesData++, n.getKeyNumber()));
-        mylabel.setText(n.getNote() + n.getOctave());
-        // remove points to keep us at no more than MAX_DATA_POINTS
-        if (series.getData().size() > MAX_DATA_POINTS) {
-            series.getData().remove(0, series.getData().size() - MAX_DATA_POINTS);
+        if(n != null){
+        	Data data = new LineChart.Data(xSeriesData++, n.getKeyNumber());
+        	series.getData().add(data);
+        	mylabel.setText(n.getNote() + n.getOctave());
+            // remove points to keep us at no more than MAX_DATA_POINTS
+            if (series.getData().size() > MAX_DATA_POINTS) {
+                series.getData().remove(0, series.getData().size() - MAX_DATA_POINTS);
+            }
+            // update
+            xAxis.setLowerBound(xSeriesData-MAX_DATA_POINTS);
+            xAxis.setUpperBound(xSeriesData-1);
         }
-        // update
-        xAxis.setLowerBound(xSeriesData-MAX_DATA_POINTS);
-        xAxis.setUpperBound(xSeriesData-1);
     }
 
     public static void main(String[] args) {
