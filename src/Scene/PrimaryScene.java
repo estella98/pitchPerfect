@@ -1,4 +1,6 @@
 package Scene;
+import javafx.scene.layout.VBox;
+import javafx.geometry.Pos;
 import be.tarsos.dsp.AudioDispatcher;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -34,9 +36,14 @@ public class PrimaryScene extends Application{
         private XYChart<Number, Number> chart;
 
         // adding the chart and the label nodes as children of the root node(self)
-        public ChartAnnotationOverlay (XYChart<Number, Number> chart, Label mylabel) {
+        public ChartAnnotationOverlay (XYChart<Number, Number> chart, Label mylabel, Label mylabel2) {
             this.getChildren().add(chart);
+            // align the text labels
             this.getChildren().add(mylabel);
+            this.getChildren().add(mylabel2);
+            VBox labelGroup = new VBox(mylabel, mylabel2);
+            labelGroup.setAlignment(Pos.CENTER_RIGHT);
+            this.getChildren().add(labelGroup);
         }
     }
 
@@ -52,9 +59,11 @@ public class PrimaryScene extends Application{
     private AudioDispatcher adp;
     private ChartAnnotationOverlay myPane;
     private Label mylabel;
+    private Label standardNoteLabel;
 
-    private void init(Stage primaryStage, AudioDispatcher myadp) {
+    private void init(Stage primaryStage) {
         mylabel = new Label("Current Note");
+        standardNoteLabel = new Label( "Standard Note");
         xAxis = new NumberAxis(0,MAX_DATA_POINTS,MAX_DATA_POINTS/10);
         xAxis.setForceZeroInRange(false);
         xAxis.setAutoRanging(false);
@@ -74,7 +83,7 @@ public class PrimaryScene extends Application{
         series = new LineChart.Series<Number, Number>();
         series.setName("Pitch Line Series");
         sc.getData().add(series);
-        myPane  = new ChartAnnotationOverlay(sc, mylabel);
+        myPane  = new ChartAnnotationOverlay(sc, mylabel, standardNoteLabel);
         primaryStage.setScene(new Scene(myPane));
         EventHandler closeWindow =  new EventHandler<WindowEvent>() {
 			@Override
@@ -88,7 +97,7 @@ public class PrimaryScene extends Application{
     }
 
     @Override public void start(Stage primaryStage) throws Exception {
-        init(primaryStage,adp);
+        init(primaryStage);
         primaryStage.show();
 
         //-- Prepare Executor Services
@@ -115,11 +124,13 @@ public class PrimaryScene extends Application{
 	private void addDataToSeries() {
 		
         Note n = mymodel.getNote();
+        Note standard_n = mymodel.getStandardNote();
         //System.out.println("the current Note Key is "+mymodel.getNote().getKeyNumber());
         if(n != null){
         	Data data = new LineChart.Data(xSeriesData++, n.getKeyNumber());
         	series.getData().add(data);
-        	mylabel.setText(n.getNote() + n.getOctave());
+        	mylabel.setText("Real-Time Pitch: " + n.getNote() + n.getOctave());
+        	standardNoteLabel.setText("Standard Note is: " + standard_n.getNote() + standard_n.getOctave());
             // remove points to keep us at no more than MAX_DATA_POINTS
             if (series.getData().size() > MAX_DATA_POINTS) {
                 series.getData().remove(0, series.getData().size() - MAX_DATA_POINTS);

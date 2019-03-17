@@ -34,4 +34,9 @@ public class Note {
 		return note;
 	}
 
+	public int toMidiID(){
+		return keyNumber + 20;
+	}
+
+
 }
