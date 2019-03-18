@@ -1,12 +1,30 @@
 package Scene;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import be.tarsos.dsp.AudioDispatcher;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.OverrunStyle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -29,7 +47,11 @@ import Model.Note;
 
 
 public class PrimaryScene extends Application{
+	
 
+
+	
+	
     // declare a pane class that holds the graph and the text label
     public class ChartAnnotationOverlay extends Pane {
         private Label mylabel;
@@ -60,7 +82,56 @@ public class PrimaryScene extends Application{
     private ChartAnnotationOverlay myPane;
     private Label mylabel;
     private Label standardNoteLabel;
-
+    private StartScene startScene;
+    
+	public class StartScene extends VBox {
+		
+		public StartScene(Stage primaryStage, Scene primaryScene) {
+//			this.setPadding(new Insets(0, 0, 400, 400)); 
+			
+			Label title = new Label("Pitch Perfect");
+			title.setTextFill(Color.web("#ffffff"));
+			title.setFont(Font.font("Verdana", 45));
+			title.setTextOverrun(OverrunStyle.CLIP);
+			title.setPrefWidth(300);
+			
+			BackgroundImage myBackground = new BackgroundImage(new Image("Assets/background.jpg",500,500,false,true),
+			        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+			          BackgroundSize.DEFAULT);
+			this.setBackground(new Background(myBackground));
+			
+			ImageView icon = new ImageView("Assets/piano.png");
+			icon.setFitHeight(100);
+			icon.setFitWidth(100);
+			
+			Button button = new Button();
+			button.setAlignment(Pos.CENTER);
+			button.setShape(new Circle(1));
+			button.setStyle(
+	                "-fx-background-radius: 5em; " +
+	                        "-fx-min-width: 100px; " +
+	                        "-fx-min-height: 100px; " +
+	                        "-fx-max-width: 100px; " +
+	                        "-fx-max-height: 100px;"
+	                );
+			button.setTranslateX(100);
+			button.setTranslateY(50);
+			button.setGraphic(icon);
+			button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() { 
+		         @Override 
+		         public void handle(MouseEvent e) { 
+		        	 primaryStage.setScene(primaryScene);
+		        	 executor.execute(mymodel);
+		         } 
+		      });  
+			
+			this.getChildren().add(title);
+			this.getChildren().add(button);
+			
+			this.setPadding(new Insets(100));
+		}
+	}
+	
     private void init(Stage primaryStage) {
         mylabel = new Label("Current Note");
         standardNoteLabel = new Label( "Standard Note");
@@ -84,7 +155,12 @@ public class PrimaryScene extends Application{
         series.setName("Pitch Line Series");
         sc.getData().add(series);
         myPane  = new ChartAnnotationOverlay(sc, mylabel, standardNoteLabel);
-        primaryStage.setScene(new Scene(myPane));
+        
+        Scene primaryScene = new Scene(myPane);
+        
+        startScene = new StartScene(primaryStage, primaryScene);
+        
+        primaryStage.setScene(new Scene(startScene,500,500));
         EventHandler closeWindow =  new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent event) {
@@ -102,7 +178,7 @@ public class PrimaryScene extends Application{
 
         //-- Prepare Executor Services
         executor = Executors.newCachedThreadPool();
-        executor.execute(mymodel);
+        
         //-- Prepare Timeline
         prepareTimeline();
     }
