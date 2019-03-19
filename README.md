@@ -20,7 +20,7 @@ Sing with Me is a Java-based application which aims to enhance the musicality of
 ## Future Improvement
 
 #### 1. Algorithm Optimization
-Experiment with the accuracy of model on different types of audio input. Explore the best algorithms and adjust pitch processors among different pitch detection methods (weighted autocorrelation, AMDF, ASDF), frequency domain analysis (FFTs) and composite methods (YIN, RAPT, YAAPT) to optimize the performance.
+Evaluate the accuracy of the model on different types of audio input. Explore the best algorithms and adjust pitch processors among different pitch detection methods (weighted autocorrelation, AMDF, ASDF), frequency domain analysis (FFTs) and composite methods (YIN, RAPT, YAAPT) to optimize the performance.
 
 ## Credits
 
