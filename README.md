@@ -17,13 +17,10 @@ Sing with Me is a Java-based application which aims to enhance the musicality of
 
 
 
-## Library Support
+## Future Improvement
 
-The application is empowered by Tarso.dsp 
-
-
-
-
+#### 1. Algorithm Optimization
+Experiment with the accuracy of model on different types of audio input. Explore the best algorithms and adjust pitch processors among different pitch detection methods (weighted autocorrelation, AMDF, ASDF), frequency domain analysis (FFTs) and composite methods (YIN, RAPT, YAAPT) to optimize the performance.
 
 ## Credits
 
