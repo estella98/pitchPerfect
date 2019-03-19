@@ -4,9 +4,7 @@ Sing with Me is a Java-based application which aims to enhance the musicality of
 
 
 ## User Interface
-
-
-
+![alt-text-1](https://github.com/estella98/Audio_Processing/tree/master/pictures/welcomepage.png "title-1") ![alt-text-2](https://github.com/estella98/Audio_Processing/tree/master/pictures/mainpage.png "title-2")
 
 
 
