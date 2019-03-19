@@ -84,53 +84,6 @@ public class PrimaryScene extends Application{
     private Label standardNoteLabel;
     private StartScene startScene;
     
-	public class StartScene extends VBox {
-		
-		public StartScene(Stage primaryStage, Scene primaryScene) {
-//			this.setPadding(new Insets(0, 0, 400, 400)); 
-			
-			Label title = new Label("Pitch Perfect");
-			title.setTextFill(Color.web("#ffffff"));
-			title.setFont(Font.font("Verdana", 45));
-			title.setTextOverrun(OverrunStyle.CLIP);
-			title.setPrefWidth(300);
-			
-			BackgroundImage myBackground = new BackgroundImage(new Image("Assets/background.jpg",500,500,false,true),
-			        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-			          BackgroundSize.DEFAULT);
-			this.setBackground(new Background(myBackground));
-			
-			ImageView icon = new ImageView("Assets/piano.png");
-			icon.setFitHeight(100);
-			icon.setFitWidth(100);
-			
-			Button button = new Button();
-			button.setAlignment(Pos.CENTER);
-			button.setShape(new Circle(1));
-			button.setStyle(
-	                "-fx-background-radius: 5em; " +
-	                        "-fx-min-width: 100px; " +
-	                        "-fx-min-height: 100px; " +
-	                        "-fx-max-width: 100px; " +
-	                        "-fx-max-height: 100px;"
-	                );
-			button.setTranslateX(100);
-			button.setTranslateY(50);
-			button.setGraphic(icon);
-			button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() { 
-		         @Override 
-		         public void handle(MouseEvent e) { 
-		        	 primaryStage.setScene(primaryScene);
-		        	 executor.execute(mymodel);
-		         } 
-		      });  
-			
-			this.getChildren().add(title);
-			this.getChildren().add(button);
-			
-			this.setPadding(new Insets(100));
-		}
-	}
 	
     private void init(Stage primaryStage) {
         mylabel = new Label("Current Note");
@@ -158,7 +111,7 @@ public class PrimaryScene extends Application{
         
         Scene primaryScene = new Scene(myPane);
         
-        startScene = new StartScene(primaryStage, primaryScene);
+        startScene = new StartScene(primaryStage, primaryScene,executor, mymodel);
         
         primaryStage.setScene(new Scene(startScene,500,500));
         EventHandler closeWindow =  new EventHandler<WindowEvent>() {
@@ -173,11 +126,12 @@ public class PrimaryScene extends Application{
     }
 
     @Override public void start(Stage primaryStage) throws Exception {
+    	
+    	//-- Prepare Executor Services
+        executor = Executors.newCachedThreadPool();
+        
         init(primaryStage);
         primaryStage.show();
-
-        //-- Prepare Executor Services
-        executor = Executors.newCachedThreadPool();
         
         //-- Prepare Timeline
         prepareTimeline();
